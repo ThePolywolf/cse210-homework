@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using System.IO;
 
 class FileManager
@@ -7,6 +6,8 @@ class FileManager
     public const string journalFolder = "Journals/";
     public static string journalPath;
     public static string journal;
+
+    public static string journalName { get { return journalPath; } }
 
     // checks if the file name exists
     public static bool FileExists(string fileName)
@@ -89,12 +90,12 @@ class FileManager
         journal = File.ReadAllText(path);
     }
 
-    public static void SaveEntry(Dictionary<string, string> entryDict)
+    public static void SaveEntry(Entry newEntry)
     {
         // Dict will contain (Date: , Prompt: , and Text: )
         // save all of them as a single string
-        string entry = $"\nDate: {entryDict["Date"]} - Prompt: {entryDict["Prompt"]}\n";
-        entry += $"{entryDict["Text"]}\n";
+        string entry = $"\nDate: {newEntry.EntryDate} - Prompt: {newEntry.Prompt}\n";
+        entry += $"{newEntry.Text}\n";
 
         // add string to the end of journal
         journal += entry;
