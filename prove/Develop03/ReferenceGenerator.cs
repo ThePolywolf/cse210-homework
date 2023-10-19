@@ -7,9 +7,11 @@ class ReferenceGenerator
         _references = new List<CompleteReference>();
     }
 
-    public void AddReference(CompleteReference reference)
+    public ReferenceGenerator AddReference(CompleteReference reference)
     {
         _references.Add(reference);
+
+        return this;
     }
 
     public ReferenceGenerator AddReference(Reference reference, Scripture scripture)
