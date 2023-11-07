@@ -9,6 +9,7 @@ class Program
             Console.Clear();
             Console.WriteLine("Options:\n 1) Breathing\n 2) Reflection\n 3) Lists\n 4) Yoga\nENTER to Quit");
             
+            Console.Write("Selection: ");
             string option = Console.ReadLine();
 
             // quit on non-integer response
