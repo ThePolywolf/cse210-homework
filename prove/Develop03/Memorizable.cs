@@ -1,10 +1,34 @@
-using System.Diagnostics;
-
 class Memorizable
 {
     private Reference _reference;
     private List<Word> _words;
     private List<bool> _hidden;
+
+    public Memorizable(CompleteReference completeReference)
+    {
+        _reference = completeReference.Reference();
+        _words = Word.DissembleScripture(completeReference.Scripture());
+
+        _hidden = new List<bool>();
+
+        for (int i = 0; i < _words.Count; i++)
+        {
+            _hidden.Add(false);
+        }
+    }
+
+    public Memorizable(Reference reference, string scripture)
+    {
+        _reference = reference;
+        _words = Word.DissemblePhrase(scripture);
+
+        _hidden = new List<bool>();
+
+        for (int i = 0; i < _words.Count; i++)
+        {
+            _hidden.Add(false);
+        }
+    }
 
     public override string ToString()
     {
@@ -61,7 +85,7 @@ class Memorizable
         // set all to true if less the number
         if (choices.Count <= number)
         {
-            Debug.WriteLine("Hiding Remaining Choices");
+            Console.WriteLine("Hiding Remaining Choices");
 
             foreach (int index in choices)
             {
@@ -85,29 +109,27 @@ class Memorizable
         }
     }
 
-    public Memorizable(CompleteReference completeReference)
-    {
-        _reference = completeReference.Reference();
-        _words = Word.DissembleScripture(completeReference.Scripture());
-
-        _hidden = new List<bool>();
-
-        for (int i = 0; i < _words.Count; i++)
+    public void Memorize(int wordsToHide){
+        while (true)
         {
-            _hidden.Add(false);
-        }
-    }
+            Console.Clear();
+            Console.WriteLine(ToString());
 
-    public Memorizable(Reference reference, string scripture)
-    {
-        _reference = reference;
-        _words = Word.DissemblePhrase(scripture);
+            if (IsAllHidden())
+            {
+                Console.Write($"\nCongrats on learning the scripture! Press ENTER to continue ");
+                Console.ReadLine();
 
-        _hidden = new List<bool>();
+                break;
+            }
+            else
+            {
+                Console.Write($"\nPress ENTER to hide some words: ");
+                Console.ReadLine();
 
-        for (int i = 0; i < _words.Count; i++)
-        {
-            _hidden.Add(false);
+                HideWords(wordsToHide);
+
+            }
         }
     }
 }
