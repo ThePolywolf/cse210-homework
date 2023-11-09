@@ -1,23 +1,20 @@
-using System;
-using System.IO;
-
 class FileManager
 {
     public const string journalFolder = "Journals/";
-    public static string journalPath;
-    public static string journal;
+    public string journalPath;
+    public string journal;
 
-    public static string journalName { get { return journalPath; } }
+    public string journalName { get { return journalPath; } }
 
     // checks if the file name exists
-    public static bool FileExists(string fileName)
+    public bool FileExists(string fileName)
     {
         string path = journalFolder + fileName + ".json";
         return File.Exists(path);
     }
 
     // creates empty json file
-    public static void CreateJournal(string journalName)
+    public void CreateJournal(string journalName)
     {
         // replace journal contents
         journal = "";
@@ -52,7 +49,7 @@ class FileManager
     }
 
     // gets all journal names
-    public static List<string> GetAllJournals()
+    public List<string> GetAllJournals()
     {
         List<string> fileNames = Directory.GetFiles(journalFolder, "*.json").ToList<string>();
 
@@ -75,7 +72,7 @@ class FileManager
     }
 
     // opens specified journal
-    public static void OpenJournal(string journalName)
+    public void OpenJournal(string journalName)
     {
         // can't open journal if it doesn't exist
         if (!FileExists(journalName))
@@ -90,7 +87,7 @@ class FileManager
         journal = File.ReadAllText(path);
     }
 
-    public static void SaveEntry(Entry newEntry)
+    public void SaveEntry(Entry newEntry)
     {
         // Dict will contain (Date: , Prompt: , and Text: )
         // save all of them as a single string

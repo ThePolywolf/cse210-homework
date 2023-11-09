@@ -3,7 +3,7 @@ using System.Reflection.Metadata;
 
 class Promptor
 {
-    public static readonly List<string> prompts = new List<string>
+    public readonly List<string> prompts = new List<string>
     {
         "What went well for you today? ",
         "What can you do better tomorrow? ",
@@ -15,7 +15,7 @@ class Promptor
         "What is a compliment you will give someone today? "
     };
 
-    public static string GeneratePrompt()
+    public string GeneratePrompt()
     {
         Random random = new Random();
         int choice = random.Next(1, prompts.Count) - 1;
