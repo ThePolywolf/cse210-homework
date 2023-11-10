@@ -18,7 +18,7 @@ public class SimpleGoal : Goal{
 
     public override string ListGoal()
     {
-        return _text;
+        return $"({_points} pts) " + _text;
     }
 
     public override Dictionary<string, string> ToData()

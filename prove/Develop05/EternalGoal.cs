@@ -16,13 +16,13 @@ public class EternalGoal : Goal{
 
     public override string ListGoal()
     {
-        return _text + " (Eternal)";
+        return $"({_points} pts) " + _text + " (Eternal)";
     }
 
     public override Dictionary<string, string> ToData()
     {
         return new Dictionary<string, string>{
-            {"id", "simple"},
+            {"id", "eternal"},
             {"text", _text},
             {"points", $"{_points}"}
         };

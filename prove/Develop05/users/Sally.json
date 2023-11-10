@@ -1,0 +1,18 @@
+{
+  "progression": {
+    "points": "100",
+    "goals": "4"
+  },
+  "0": {
+    "id": "eternal",
+    "text": "Do this thing again",
+    "points": "25"
+  },
+  "1": {
+    "id": "checklist",
+    "text": "Do this a bunch too",
+    "points": "250",
+    "target": "8",
+    "completions": "6"
+  }
+}
