@@ -24,5 +24,10 @@
     "points": "120",
     "target": "12",
     "completions": "0"
+  },
+  "4": {
+    "id": "simple",
+    "text": "Do laundry",
+    "points": "15"
   }
 }
